@@ -31,28 +31,40 @@ const particlesOptions = {
   }
 }
 
-
-
 function App() {
   const [input, setInput] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [box, setBox] = useState({})
 
-//events
+  // Functions/////////////////
+
+const calculateFaceLocation = (data) => {
+  const clarifiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+  const image = document.getElementById('inputImage');
+  const width = Number(image.width);
+  const height = Number(image.height)
+  return {
+    leftCol: clarifiFace.left_col * width,
+    topRow: clarifiFace.top_row * height,
+    rightCol: width - (clarifiFace.right_col * width),
+    bottomRow: height - (clarifiFace.bottom_row *height)
+  }
+}
+
+const displayFaceBox = (box) => {
+  setBox(box);
+}
+///////events/////////////////////////////////////////////////////
   const onInputChange = (event) => {
-    console.log(event.target.value);
+    setInput(event.target.value); 
   }
 
     const onButtonSubmit = () => {
-      console.log('click');
-      app.models.predict('a403429f2ddf4b49b307e318f00e528b', 'https://samples.clarifai.com/face-det.jpg').then(
-    function(response) {
-     console.log(response);
-    },
-    function(err) {
-      // there was an error
+      setImageUrl(input);           
+      app.models.predict(Clarifai.FACE_DETECT_MODEL, input).then(response => displayFaceBox(calculateFaceLocation(response)))
+      .catch(err => console.log(err));
     }
-  );
-    }
-//
+
 
   return (
     <div className='App'>
@@ -63,7 +75,7 @@ function App() {
       <Logo />
       <Rank />
       <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit}/>
-      <FaceRecognition />
+      <FaceRecognition  box={box} imageUrl={imageUrl}/>
     </div>
   );
 }
