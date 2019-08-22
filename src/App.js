@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
@@ -37,7 +38,7 @@ function App() {
   const [imageUrl, setImageUrl] = useState('');
   const [box, setBox] = useState({});
   const [route, setRoute] = useState('signin')
-
+  const [isSignedIn, setisSignedIn] = useState(false);
   // Functions/////////////////
 
 const calculateFaceLocation = (data) => {
@@ -69,6 +70,11 @@ const displayFaceBox = (box) => {
 
     //Route
     const onRouteChange = (route) => {
+      if (route === 'signout') {
+        setisSignedIn(false);
+      } else if (route === 'home') {
+        setisSignedIn(true);
+      }
       setRoute(route);
     }
 
@@ -78,15 +84,22 @@ const displayFaceBox = (box) => {
       <Particles className='particles'
         params={particlesOptions}
         />                  
-      <Navigation onRouteChange={onRouteChange} />
-      { route === 'signin' ?
-      <Signin onRouteChange={onRouteChange} /> 
-      : <div> 
-        <Logo />
-        <Rank />
-        <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit}/>
-        <FaceRecognition  box={box} imageUrl={imageUrl}/>
-      </div>
+      <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
+      { route === 'home'
+        ? <div> 
+            <Logo />
+            <Rank />
+            <ImageLinkForm 
+              onInputChange={onInputChange} 
+              onButtonSubmit={onButtonSubmit}/>
+            <FaceRecognition  box={box} imageUrl={imageUrl}/>
+          </div>
+        : ( 
+        route === 'signin' 
+        ? <Signin onRouteChange={onRouteChange} />
+        : <Register onRouteChange={onRouteChange} />
+      )
+            
       }
     </div>
   );
