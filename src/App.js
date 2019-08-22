@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Navigation from './components/Navigation/Navigation';
+import Signin from './components/Signin/Signin';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
@@ -34,7 +35,8 @@ const particlesOptions = {
 function App() {
   const [input, setInput] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [box, setBox] = useState({})
+  const [box, setBox] = useState({});
+  const [route, setRoute] = useState('signin')
 
   // Functions/////////////////
 
@@ -65,17 +67,27 @@ const displayFaceBox = (box) => {
       .catch(err => console.log(err));
     }
 
+    //Route
+    const onRouteChange = (route) => {
+      setRoute(route);
+    }
+
 
   return (
     <div className='App'>
       <Particles className='particles'
         params={particlesOptions}
         />                  
-      <Navigation />
-      <Logo />
-      <Rank />
-      <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit}/>
-      <FaceRecognition  box={box} imageUrl={imageUrl}/>
+      <Navigation onRouteChange={onRouteChange} />
+      { route === 'signin' ?
+      <Signin onRouteChange={onRouteChange} /> 
+      : <div> 
+        <Logo />
+        <Rank />
+        <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit}/>
+        <FaceRecognition  box={box} imageUrl={imageUrl}/>
+      </div>
+      }
     </div>
   );
 }
