@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About this project
 Project live:
-[![Github Status]](https://mariu7.github.io/faceRecognition-Frontend/)
+https://mariu7.github.io/faceRecognition-Frontend
