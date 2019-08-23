@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/facerecognition/static/css/main.1652b1e4.chunk.css",
-    "main.js": "/facerecognition/static/js/main.03ebad1b.chunk.js",
-    "main.js.map": "/facerecognition/static/js/main.03ebad1b.chunk.js.map",
-    "runtime~main.js": "/facerecognition/static/js/runtime~main.7587f13b.js",
-    "runtime~main.js.map": "/facerecognition/static/js/runtime~main.7587f13b.js.map",
-    "static/css/2.31dafeb2.chunk.css": "/facerecognition/static/css/2.31dafeb2.chunk.css",
-    "static/js/2.6caff026.chunk.js": "/facerecognition/static/js/2.6caff026.chunk.js",
-    "static/js/2.6caff026.chunk.js.map": "/facerecognition/static/js/2.6caff026.chunk.js.map",
-    "index.html": "/facerecognition/index.html",
-    "precache-manifest.8a8fd959127ad80d30a0957564c530c2.js": "/facerecognition/precache-manifest.8a8fd959127ad80d30a0957564c530c2.js",
-    "service-worker.js": "/facerecognition/service-worker.js",
-    "static/css/2.31dafeb2.chunk.css.map": "/facerecognition/static/css/2.31dafeb2.chunk.css.map",
-    "static/css/main.1652b1e4.chunk.css.map": "/facerecognition/static/css/main.1652b1e4.chunk.css.map"
+    "main.css": "//faceRecognition-Frontend/static/css/main.1652b1e4.chunk.css",
+    "main.js": "//faceRecognition-Frontend/static/js/main.c1b5e8cc.chunk.js",
+    "main.js.map": "//faceRecognition-Frontend/static/js/main.c1b5e8cc.chunk.js.map",
+    "runtime~main.js": "//faceRecognition-Frontend/static/js/runtime~main.74db5b86.js",
+    "runtime~main.js.map": "//faceRecognition-Frontend/static/js/runtime~main.74db5b86.js.map",
+    "static/css/2.31dafeb2.chunk.css": "//faceRecognition-Frontend/static/css/2.31dafeb2.chunk.css",
+    "static/js/2.caf2ca77.chunk.js": "//faceRecognition-Frontend/static/js/2.caf2ca77.chunk.js",
+    "static/js/2.caf2ca77.chunk.js.map": "//faceRecognition-Frontend/static/js/2.caf2ca77.chunk.js.map",
+    "index.html": "//faceRecognition-Frontend/index.html",
+    "precache-manifest.bc318770978409111ac9999f0bd3546b.js": "//faceRecognition-Frontend/precache-manifest.bc318770978409111ac9999f0bd3546b.js",
+    "service-worker.js": "//faceRecognition-Frontend/service-worker.js",
+    "static/css/2.31dafeb2.chunk.css.map": "//faceRecognition-Frontend/static/css/2.31dafeb2.chunk.css.map",
+    "static/css/main.1652b1e4.chunk.css.map": "//faceRecognition-Frontend/static/css/main.1652b1e4.chunk.css.map"
   }
 }
