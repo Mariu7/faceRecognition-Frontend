@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## About this project
-This is only front-end oof aplication. 
+This is only front-end of aplication. 
 Later on link to back-end of application will be included.
 
 This application is using clarifi API for facerecognition.
