@@ -33,12 +33,14 @@ const particlesOptions = {
   }
 }
 
+
 function App() {
   const [input, setInput] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [box, setBox] = useState({});
   const [route, setRoute] = useState('signin')
   const [isSignedIn, setisSignedIn] = useState(false);
+
   // Functions/////////////////
 
 const calculateFaceLocation = (data) => {
