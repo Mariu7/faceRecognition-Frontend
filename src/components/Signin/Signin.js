@@ -23,8 +23,9 @@ function Signin(props) {
                   password: signInpassword
               })
           }).then(Response => Response.json())
-            .then(data => {
-                if (data === 'success') {
+            .then(user => {
+                if (user.id) {
+                    props.loadUser(user);
                     props.onRouteChange('home');
                 }
             })  

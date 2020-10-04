@@ -13,7 +13,7 @@ import './App.css';
 
 
 const app = new Clarifai.App({
-  apiKey: '2db03d7f76f542b0a74493e5b27d25a2'
+  apiKey: '1d789fd119ca45eb94665de408d9661e'
 });
 
 
@@ -40,8 +40,28 @@ function App() {
   const [box, setBox] = useState({});
   const [route, setRoute] = useState('signin')
   const [isSignedIn, setisSignedIn] = useState(false);
+  const [user,setUser] = useState({
+            id: '',
+            name: '',
+            email: '',   
+            password: '',         
+            entries: 0,
+            joined: ''
+  }  )
 
   // Functions/////////////////
+const loadUser = (data) => {
+    setUser({
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined
+    })
+    }
+  
+
+
 
 const calculateFaceLocation = (data) => {
   const clarifiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
@@ -66,14 +86,31 @@ const displayFaceBox = (box) => {
 
     const onButtonSubmit = () => {
       setImageUrl(input);           
-      app.models.predict(Clarifai.FACE_DETECT_MODEL, input).then(response => displayFaceBox(calculateFaceLocation(response)))
+      app.models.predict(Clarifai.DEMOGRAPHICS_MODEL, input)
+      .then(response => {
+        console.log('hi', response)
+        if(response) {
+          fetch('http://localhost:3001/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: user.id
+            })
+          })
+          .then(response => response.json())
+          .then(count => {
+            setUser(Object.assign(user, {entries: count}))
+          })
+        }
+         displayFaceBox(calculateFaceLocation(response))})
       .catch(err => console.log(err));
     }
 
     //Route
     const onRouteChange = (route) => {
-      if (route === 'signout') {
+      if (route === 'signin') {
         setisSignedIn(false);
+
       } else if (route === 'home') {
         setisSignedIn(true);
       }
@@ -90,7 +127,7 @@ const displayFaceBox = (box) => {
       { route === 'home'
         ? <div> 
             <Logo />
-            <Rank />
+            <Rank name={user.name} entries={user.entries}/>
             <ImageLinkForm 
               onInputChange={onInputChange} 
               onButtonSubmit={onButtonSubmit}/>
@@ -98,8 +135,8 @@ const displayFaceBox = (box) => {
           </div>
         : ( 
         route === 'signin' 
-        ? <Signin onRouteChange={onRouteChange} />
-        : <Register onRouteChange={onRouteChange} />
+        ? <Signin loadUser={loadUser} onRouteChange={onRouteChange} />
+        : <Register loadUser={loadUser} onRouteChange={onRouteChange} />
       )
             
       }

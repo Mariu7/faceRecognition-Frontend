@@ -15,6 +15,6 @@ Open application and simple put in image URL to see face recognition in action.
 
 ## Project live
 Front-end:
-https://mariu7.github.io/faceRecognition-Frontend
+https://mariu7.github.io/
 
 Later this project will be migrated.

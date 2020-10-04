@@ -2,7 +2,7 @@
   "name": "facerecognition",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mariu7.github.io/faceRecognition-Frontend",
+  "homepage": "https://mariu7.github.io/",
   "dependencies": {
     "clarifai": "^2.9.1",
     "react": "^16.13.0",

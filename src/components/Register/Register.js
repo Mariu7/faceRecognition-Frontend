@@ -18,7 +18,7 @@ function Register(props) {
 
       const onSubmitRegister = () => {
         //console.log({signInemail,signInpassword});
-        fetch('http://localhost:3001/signin',{
+        fetch('http://localhost:3001/register',{
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -29,13 +29,14 @@ function Register(props) {
         }).then(Response => Response.json())
           .then(user => {
               if (user) {
+                  props.loadUser(user);
                   props.onRouteChange('home');
               }
           })  
     }   
 
 
-    const { onRouteChange} = props;
+    //const { onRouteChange} = props;
     return (   
         <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l m6 shadow-5 center">
             <main className="pa4 black-80">
