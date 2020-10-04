@@ -27,13 +27,8 @@ function Signin(props) {
                 if (data === 'success') {
                     props.onRouteChange('home');
                 }
-            })
-            
-          
-      }
-
-
-    
+            })  
+      }   
     
         const { onRouteChange} = props;
          return (   
