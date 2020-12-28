@@ -11,10 +11,3 @@ Main purpose for this project is to learn/improve newer react syntax(hooks, no c
 ## Usage
 Open application and simple put in image URL to see face recognition in action.
 
-
-
-## Project live
-Front-end:
-https://mariu7.github.io/
-
-Later this project will be migrated.
