@@ -8,15 +8,15 @@ function Register(props) {
     //events
     const onEmailChange = (event) => {
         setEmail (event.target.value); 
-      }
-      const onPasswordChange = (event) => {
+    };
+    const onPasswordChange = (event) => {
         setPassword (event.target.value); 
-      }
-      const onNameChange = (event) => {
+    };
+    const onNameChange = (event) => {
         setName (event.target.value); 
-      }
+    };
 
-      const onSubmitRegister = () => {
+    const onSubmitRegister = () => {
         //console.log({signInemail,signInpassword});
         fetch('http://localhost:3001/register',{
             method: 'post',
@@ -27,13 +27,13 @@ function Register(props) {
                 password: password
             })
         }).then(Response => Response.json())
-          .then(user => {
-              if (user) {
-                  props.loadUser(user);
-                  props.onRouteChange('home');
-              }
-          })  
-    }   
+            .then(user => {
+                if (user) {
+                    props.loadUser(user);
+                    props.onRouteChange('home');
+                }
+            }); 
+    };
 
 
     //const { onRouteChange} = props;
@@ -46,42 +46,41 @@ function Register(props) {
                         <div className="mt3">
                             <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                             <input 
-                            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                            type="text" 
-                            name="name"  
-                            id="name"
-                            onChange={onNameChange}/>
+                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                                type="text" 
+                                name="name"  
+                                id="name"
+                                onChange={onNameChange}/>
                         </div>
                         <div className="mt3">
                             <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                             <input 
-                            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                            type="email" 
-                            name="email-address"  
-                            id="email-address"
-                            onChange={onEmailChange}/>
+                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                                type="email" 
+                                name="email-address"  
+                                id="email-address"
+                                onChange={onEmailChange}/>
                         </div>
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                             <input 
-                            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                            type="password" name="password"  
-                            id="password" 
-                            onChange={onPasswordChange}/>
+                                className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                                type="password" name="password"  
+                                id="password" 
+                                onChange={onPasswordChange}/>
                         </div>
                     </fieldset>
                     <div className="">
                         <input 
-                        onClick={ () =>onSubmitRegister('home')}
-                        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                        type="submit" 
-                        value="Register"/>
+                            onClick={ () =>onSubmitRegister('home')}
+                            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                            type="submit" 
+                            value="Register"/>
                     </div>
-            </div>
-        </main>
-    </article> 
-    )
+                </div>
+            </main>
+        </article> 
+    );
 }
 
-export default Register
-;
+export default Register;
